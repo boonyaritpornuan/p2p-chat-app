@@ -1,0 +1,37 @@
+[versions]
+kotlin = "2.1.20" # Check latest stable version compatible with KMP
+androidGradlePlugin = "8.4.0" # Check latest stable version
+composeBom = "2025.04.01" # Latest BOM from developer.android.com
+activityCompose = "1.9.0" # Check latest version compatible with BOM
+viewModelCompose = "2.8.0" # Check latest version compatible with BOM
+coroutines = "1.8.0" # Check latest stable version
+webrtcKmp = "0.12.15" # From webrtc-kmp README
+libsignalClient = "0.70.1" # Latest version from Maven Central
+composeCompiler = "2.1.20" # Matches Kotlin version for Kotlin 2.0+
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+webrtc-kmp = { module = "com.shepeliev:webrtc-kmp", version.ref = "webrtcKmp" }
+libsignal-client = { module = "org.signal:libsignal-client", version.ref = "libsignalClient" }
+
+# Compose BOM
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewModelCompose" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" } # Added for debugImplementation
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "composeCompiler" } # Define Compose Compiler plugin
+# compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" } # Not using Compose Multiplatform plugin directly for Android UI
+
